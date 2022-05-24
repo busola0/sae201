@@ -23,7 +23,7 @@ namespace Application
         public MainWindow()
         {
             InitializeComponent();
-            
+            listView.ItemsSource = ApplicationData.listeMaladies;
         }
     }
 }

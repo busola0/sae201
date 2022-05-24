@@ -24,7 +24,7 @@ namespace Application
                 
                 this.connection.ConnectionString =
                 "Data Source=srv-jupiter.iut-acy.local;" +
-                "Initial Catalog=AmphiQuizz;" +
+                "Initial Catalog=BT28;" +
                 "Integrated Security=SSPI;";
                 
                 this.connection.Open();

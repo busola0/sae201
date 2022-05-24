@@ -5,14 +5,23 @@ using System.Text;
 namespace Application
 {
     using System;
+    using System.Data.SqlClient;
 
     public class Maladie : ICrud<Maladie>
     {
-        public Typemaladie typemaladie;
+        
+        public int numero
+        {
+            get;set;
 
-        private int numero;
-        private string libelle;
+        }
 
+        public string libelleMaladie
+        {
+            get; set;
+
+        }
+     
         public void Create()
         {
             throw new NotImplementedException();
@@ -25,7 +34,37 @@ namespace Application
 
         public List<Maladie> FindAll()
         {
-            throw new NotImplementedException();
+            List<Maladie> listeMaladie = new List<Maladie>();
+            DataAccess access = new DataAccess();
+            SqlDataReader reader;
+            try
+            {
+                if (access.openConnection())
+                {
+                    reader = access.getData("select * from maladie;");
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Maladie uneMaladie = new Maladie();
+                            uneMaladie.numero = (int)reader.GetInt32(0);
+                            uneMaladie.libelleMaladie = reader.GetString(1);
+                            listeMaladie.Add(uneMaladie);
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("No rows found.", "Important Message");
+                    }
+                    reader.Close();
+                    access.closeConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Important Message");
+            }
+            return listeMaladie;
         }
 
         public List<Maladie> FindBySelection(string criteres)

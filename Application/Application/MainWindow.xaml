@@ -9,12 +9,12 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid Margin="0,0,0,-6" RenderTransformOrigin="0.37,0.376">
+    <Grid Background="#FF34C924">
         <ListView
             x:Name="listView"
             Width="167"
-            Height="203"
-            Margin="213,91,0,0"
+            Height="108"
+            Margin="149,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
 

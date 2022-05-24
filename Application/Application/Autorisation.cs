@@ -120,6 +120,8 @@ namespace Application
 
         public List<Autorisation> FindAll()
         {
+
+
             List<Autorisation> listeAutotisations = new List<Autorisation>();
             DataAccess access = new DataAccess();
             SqlDataReader reader;
@@ -127,7 +129,7 @@ namespace Application
             {
                 if (access.openConnection())
                 {
-                    reader = access.getData("select * from dbo.Groupe;");
+                    reader = access.getData("select * from est_autorise;");
                     if (reader.HasRows)
                     {
                         while (reader.Read())
