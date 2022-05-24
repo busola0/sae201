@@ -7,12 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="maladie.jpg" />
     <None Remove="pharmacie.jpg" />
     <None Remove="pharmacie.png" />
+    <None Remove="Sans titre.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="maladie.jpg" />
+    <Resource Include="Sans titre.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

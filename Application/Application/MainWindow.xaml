@@ -12,20 +12,17 @@
     <Grid Background="#FF34C924">
         <ListView
             x:Name="listView"
-            Width="167"
-            Height="108"
-            Margin="149,10,0,0"
+            Width="205"
+            Height="180"
+            Margin="205,10,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top"
+            ItemsSource="{Binding libelleMaladie}" />
 
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn
-                        Width="100"
-                        DisplayMemberBinding="{Binding libelleMaladie}"
-                        Header="Maladie" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        <Image
+            Margin="10,10,600,250"
+            Source="Sans titre.png"
+            Stretch="Fill" />
     </Grid>
 </Window>
