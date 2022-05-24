@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace Application 
@@ -119,7 +120,39 @@ namespace Application
 
         public List<Autorisation> FindAll()
         {
-            throw new NotImplementedException();
+            List<Autorisation> listeAutotisations = new List<Autorisation>();
+            DataAccess access = new DataAccess();
+            SqlDataReader reader;
+            try
+            {
+                if (access.openConnection())
+                {
+                    reader = access.getData("select * from dbo.Groupe;");
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Autorisation uneAutorisation = new Autorisation();
+                            uneAutorisation.uneMaladie = reader.GetFieldValue<Maladie>(0);
+                            uneAutorisation.unMedicament = reader.GetFieldValue<Medicament>(1);
+                            uneAutorisation.dateAutorisation = reader.GetDateTime(2);
+                            uneAutorisation.commentaire = reader.GetString(3);
+                            listeAutotisations.Add(uneAutorisation);
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("No rows found.", "Important Message");
+                    }
+                    reader.Close();
+                    access.closeConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Important Message");
+            }
+            return listeAutotisations;
         }
 
         public List<Autorisation> FindBySelection(string criteres)

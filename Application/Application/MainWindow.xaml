@@ -14,16 +14,18 @@
             x:Name="listView"
             Width="167"
             Height="203"
-            Margin="271,131,0,0"
+            Margin="213,91,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" 
-            
-            <ListView.View>
-            <GridView>
-                <GridViewColumn CellTemplate="{StaticResource caseACocher}" Width="30"/>
-                <GridViewColumn Header="Groupe" Width="100" DisplayMemberBinding="{Binding libelleMaladie}" />
-            </GridView>
-            </ListView.View> 
+            VerticalAlignment="Top">
 
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding libelleMaladie}"
+                        Header="Maladie" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
