@@ -9,20 +9,104 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <!--  template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item  -->
+        <DataTemplate x:Key="caseACocher">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid Background="#FF34C924">
         <ListView
-            x:Name="listView"
-            Width="205"
-            Height="180"
-            Margin="205,10,0,0"
+            x:Name="listViewMaladie"
+            Width="361"
+            Height="102"
+            Margin="400,10,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemsSource="{Binding libelleMaladie}" />
+            VerticalAlignment="Top">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding libelleMaladie}"
+                        Header="Maladie" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView
+            x:Name="listViewMedicament"
+            Width="361"
+            Height="102"
+            Margin="400,127,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding libelleMedicament}"
+                        Header="Médicament" />
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
         <Image
-            Margin="10,10,600,250"
+            Margin="10,10,557,217"
             Source="Sans titre.png"
             Stretch="Fill" />
+
+        <DataGrid
+            x:Name="dataGridAuto"
+            Width="390"
+            Height="166"
+            Margin="10,252,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding lesAutorisations}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="70"
+                    Binding="{Binding libelleMaladie}"
+                    Header="Maladie" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding Modele}"
+                    Header="Modèle" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Annee}"
+                    Header="Année" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Prix}"
+                    Header="Prix" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Calendar Margin="-102,28,137,217" />
+
+        <TextBox
+            Width="253"
+            Height="103"
+            Margin="426,273,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap" />
+        <Label
+            Width="253"
+            Height="25"
+            Margin="426,240,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="White"
+            Content="Commentaire (facultatif):" />
     </Grid>
 </Window>

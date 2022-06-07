@@ -41,13 +41,13 @@ namespace Application
             {
                 if (access.openConnection())
                 {
-                    reader = access.getData("select * from maladie;");
+                    reader = access.getData("select * from MALADIE;");
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
                             Maladie uneMaladie = new Maladie();
-                            uneMaladie.numero = (int)reader.GetInt32(0);
+                            uneMaladie.numero = reader.GetInt32(0);
                             uneMaladie.libelleMaladie = reader.GetString(1);
                             listeMaladie.Add(uneMaladie);
                         }
