@@ -25,8 +25,8 @@
         <ListView
             x:Name="listViewMaladie"
             Height="102"
-            Margin="484,22,0,0"
-            VerticalAlignment="Top" HorizontalAlignment="Left" Width="283">
+            Margin="749,25,0,0"
+            VerticalAlignment="Top" HorizontalAlignment="Left" Width="290">
 
             <ListView.View>
                 <GridView>
@@ -42,8 +42,8 @@
         <ListView
             x:Name="listViewMedicament"
             Height="102"
-            Margin="282,25,0,0"
-            VerticalAlignment="Top" HorizontalAlignment="Left" Width="197">
+            Margin="397,25,0,0"
+            VerticalAlignment="Top" HorizontalAlignment="Left" Width="290">
 
             <ListView.View>
                 <GridView>
@@ -63,11 +63,11 @@
 
         <DataGrid
             x:Name="dataGridAuto"
-            Height="291"
-            Margin="10,216,0,0"
+            Height="242"
+            Margin="10,265,0,0"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding lesAutorisations}" HorizontalAlignment="Left" Width="803">
+            ItemsSource="{Binding lesAutorisations}" HorizontalAlignment="Left" Width="598">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
@@ -88,19 +88,19 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Calendar Margin="915,265,0,0" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201" />
+        <Calendar Margin="628,186,0,0" Height="169" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201" />
 
         <TextBox
-            Height="102"
-            Margin="542,132,5,0"
+            Height="73"
+            Margin="860,294,86,0"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <Label
             Width="253"
             Height="25"
-            Margin="814,86,0,0"
+            Margin="868,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Background="White"
             Content="Commentaire (facultatif):" />
     </Grid>
