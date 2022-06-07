@@ -11,6 +11,7 @@
     <None Remove="pharmacie.jpg" />
     <None Remove="pharmacie.png" />
     <None Remove="Sans titre.png" />
+    <None Remove="ZEDOC.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,9 @@
   <ItemGroup>
     <Resource Include="maladie.jpg" />
     <Resource Include="Sans titre.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ZEDOC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

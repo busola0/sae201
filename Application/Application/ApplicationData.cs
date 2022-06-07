@@ -35,6 +35,11 @@ namespace Application
 
             Maladie uneMaladie = new Maladie();
             listeMaladies = uneMaladie.FindAll();
+            Medicament unMedicament = new Medicament();
+            listeMedicaments = unMedicament.FindAll();
+            Autorisation uneAutorisation = new Autorisation();
+            listeAutorisations = uneAutorisation.FindAll();
+
 
 
 

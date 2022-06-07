@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace Application
 {
     public class Medicament : ICrud<Medicament>
     {
-        public CategorieMedicament categorieMedicament;
 
-        private int numero;
-        private string nom;
-        private CategorieMedicament categorie;
+        public int numero
+        {
+            get; set;
+
+        }
+
+        public string libelleMedicament
+        {
+            get; set;
+
+        }
+
 
         public void Create()
         {
@@ -24,7 +33,37 @@ namespace Application
 
         public List<Medicament> FindAll()
         {
-            throw new NotImplementedException();
+            List<Medicament> listeMedicament = new List<Medicament>();
+            DataAccess access = new DataAccess();
+            SqlDataReader reader;
+            try
+            {
+                if (access.openConnection())
+                {
+                    reader = access.getData("select * from MEDICAMENT;");
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Medicament unMedicament = new Medicament();
+                            unMedicament.numero = reader.GetInt32(0);
+                            unMedicament.libelleMedicament = reader.GetString(2);
+                            listeMedicament.Add(unMedicament);
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("No rows found.", "Important Message");
+                    }
+                    reader.Close();
+                    access.closeConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "Important Message");
+            }
+            return listeMedicament;
         }
 
         public List<Medicament> FindBySelection(string criteres)

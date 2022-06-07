@@ -10,6 +10,7 @@
     Height="450"
     mc:Ignorable="d">
     <Window.Resources>
+
         <!--  template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item  -->
         <DataTemplate x:Key="caseACocher">
             <StackPanel Orientation="Horizontal">
@@ -17,12 +18,18 @@
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FF34C924">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*" />
+            <ColumnDefinition Width="31*" />
+        </Grid.ColumnDefinitions>
         <ListView
             x:Name="listViewMaladie"
+            Grid.Column="1"
             Width="361"
             Height="102"
-            Margin="400,10,0,0"
+            Margin="96,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
 
@@ -39,9 +46,10 @@
 
         <ListView
             x:Name="listViewMedicament"
+            Grid.Column="1"
             Width="361"
             Height="102"
-            Margin="400,127,0,0"
+            Margin="96,127,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
 
@@ -58,13 +66,14 @@
 
 
         <Image
-            Margin="10,10,557,217"
-            Source="Sans titre.png"
+            Margin="0,0,71,227"
+            Source="ZEDOC.png"
             Stretch="Fill" />
 
         <DataGrid
             x:Name="dataGridAuto"
-            Width="390"
+            Grid.ColumnSpan="2"
+            Width="477"
             Height="166"
             Margin="10,252,0,0"
             HorizontalAlignment="Left"
@@ -73,37 +82,39 @@
             ItemsSource="{Binding lesAutorisations}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Width="70"
+                    Width="*"
+                    Binding="{Binding nomMedicament}"
+                    Header="Medicament" />
+                <DataGridTextColumn
+                    Width="*"
                     Binding="{Binding libelleMaladie}"
                     Header="Maladie" />
                 <DataGridTextColumn
-                    Width="100"
-                    Binding="{Binding Modele}"
-                    Header="Modèle" />
+                    Width="*"
+                    Binding="{Binding date}"
+                    Header="Date" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Annee}"
-                    Header="Année" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Prix}"
-                    Header="Prix" />
+                    Binding="{Binding commentaire}"
+                    Header="Commentaire" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <Calendar Margin="-102,28,137,217" />
+        <Calendar Grid.ColumnSpan="2" Margin="213,47,420,227" />
 
         <TextBox
+            Grid.Column="1"
             Width="253"
-            Height="103"
-            Margin="426,273,0,0"
+            Height="102"
+            Margin="204,284,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TextWrapping="Wrap" />
         <Label
+            Grid.Column="1"
             Width="253"
             Height="25"
-            Margin="426,240,0,0"
+            Margin="204,243,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="White"

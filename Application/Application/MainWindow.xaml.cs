@@ -23,7 +23,10 @@ namespace Application
         public MainWindow()
         {
             InitializeComponent();
-            listView.ItemsSource = ApplicationData.listeMaladies;
+            listViewMaladie.ItemsSource = ApplicationData.listeMaladies;
+            listViewMedicament.ItemsSource = ApplicationData.listeMedicaments;
+            dataGridAuto.ItemsSource = ApplicationData.listeAutorisations;
         }
+
     }
 }

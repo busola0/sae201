@@ -129,15 +129,15 @@ namespace Application
             {
                 if (access.openConnection())
                 {
-                    reader = access.getData("select * from est_autorise;");
+                    reader = access.getData("select nomMedicament, libelleMaladie, dateautorisation, commentaire from est_autorise e join maladie ma on e.nummaladie = ma.nummaladie join medicament me on e.nummedicament = me.nummedicament");
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
                             Autorisation uneAutorisation = new Autorisation();
-                            uneAutorisation.uneMaladie = reader.GetFieldValue<Maladie>(0);
-                            uneAutorisation.unMedicament = reader.GetFieldValue<Medicament>(1);
-                            uneAutorisation.dateAutorisation = reader.GetDateTime(2);
+                            uneAutorisation.nomMedicament = reader.GetString(0);
+                            uneAutorisation.libelleMaladie = reader.GetString(1);
+                            uneAutorisation.date = reader.GetDateTime(2);
                             uneAutorisation.commentaire = reader.GetString(3);
                             listeAutotisations.Add(uneAutorisation);
                         }
@@ -162,10 +162,28 @@ namespace Application
             throw new NotImplementedException();
         }
 
-        private Maladie uneMaladie;
-        private Medicament unMedicament;
-        private DateTime dateAutorisation;
-        private string commentaire;
+        public string libelleMaladie
+        {
+            get; set;
+
+        }
+
+        public string nomMedicament
+        {
+            get; set;
+
+        }
+        public DateTime date
+        {
+            get; set;
+
+        }
+
+        public string commentaire
+        {
+            get; set;
+
+        }
 
     }
 
