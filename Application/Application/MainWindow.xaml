@@ -72,11 +72,8 @@
             HorizontalAlignment="Left"
             AutoGenerateColumns="False"
             Background="#FFAACFC4"
-            ItemsSource="{Binding lesAutorisations}"
-            OpacityMask="#FFAACFC3">
-            <DataGrid.CellStyle>
-                <Style />
-            </DataGrid.CellStyle>
+            ItemsSource="{Binding lesAutorisations}">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding nomMedicament}" Header="Medicament" />
                 <DataGridTextColumn Binding="{Binding libelleMaladie}" Header="Maladie" />

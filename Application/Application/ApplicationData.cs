@@ -30,8 +30,6 @@ namespace Application
 
         public static void loadApplicationData()
         {
-         
-   
 
             Maladie uneMaladie = new Maladie();
             listeMaladies = uneMaladie.FindAll();
@@ -39,10 +37,6 @@ namespace Application
             listeMedicaments = unMedicament.FindAll();
             Autorisation uneAutorisation = new Autorisation();
             listeAutorisations = uneAutorisation.FindAll();
-
-
-
-
         }
     }
 }

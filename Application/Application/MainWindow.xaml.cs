@@ -38,6 +38,8 @@ namespace Application
             newAutorisaition.commentaire = commentaire.Text;
 
             newAutorisaition.Create();
+            ApplicationData.loadApplicationData();
+            dataGridAuto.ItemsSource = ApplicationData.listeAutorisations;
         }
 
         private void DelAutorisation(object sender, RoutedEventArgs e)
@@ -47,5 +49,6 @@ namespace Application
 
 
         }
+
     }
 }
