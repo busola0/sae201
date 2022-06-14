@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="maladie.jpg" />
+    <None Remove="medecin.jpg" />
     <None Remove="pharmacie.jpg" />
     <None Remove="pharmacie.png" />
     <None Remove="Sans titre.png" />
@@ -20,6 +21,9 @@
 
   <ItemGroup>
     <Resource Include="maladie.jpg" />
+    <Resource Include="medecin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Sans titre.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

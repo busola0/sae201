@@ -6,12 +6,11 @@
     xmlns:local="clr-namespace:Application"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="1190"
     Height="530"
+    MinWidth="1190"
     mc:Ignorable="d">
     <Window.Resources>
 
-        <!--  template pour inserer une case a cocher dans un listview : la case est cochee sur la selection d'un item  -->
         <DataTemplate x:Key="caseACocher">
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" />
@@ -19,89 +18,124 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid Margin="0,0,-25,-16">
-
+    <Grid>
 
         <ListView
             x:Name="listViewMaladie"
-            Height="102"
-            Margin="749,25,0,0"
-            VerticalAlignment="Top" HorizontalAlignment="Left" Width="290">
+            Width="300"
+            Height="110"
+            Margin="262,132,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FFAACFC4"
+            Foreground="#FF223945">
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
-                    <GridViewColumn
-                        Width="100"
-                        DisplayMemberBinding="{Binding libelleMaladie}"
-                        Header="Maladie" />
+                    <GridViewColumn CellTemplate="{StaticResource caseACocher}" />
+                    <GridViewColumn DisplayMemberBinding="{Binding libelleMaladie}" Header="Maladie" />
                 </GridView>
             </ListView.View>
         </ListView>
 
         <ListView
             x:Name="listViewMedicament"
-            Height="102"
-            Margin="397,25,0,0"
-            VerticalAlignment="Top" HorizontalAlignment="Left" Width="290">
+            Width="300"
+            Height="110"
+            Margin="262,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FFAACFC4"
+            Foreground="#FF223945">
 
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
-                    <GridViewColumn
-                        Width="100"
-                        DisplayMemberBinding="{Binding libelleMedicament}"
-                        Header="Médicament" />
+                    <GridViewColumn DisplayMemberBinding="{Binding libelleMedicament}" Header="Médicament" />
                 </GridView>
             </ListView.View>
         </ListView>
 
 
         <Image
+            Width="238"
+            Height="207"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Source="ZEDOC.png"
-            Stretch="Fill" Height="207" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238" Grid.RowSpan="2" />
+            Stretch="Fill" />
 
         <DataGrid
             x:Name="dataGridAuto"
-            Height="242"
-            Margin="10,265,0,0"
-            VerticalAlignment="Top"
+            Width="875"
+            Margin="10,247,0,13"
+            HorizontalAlignment="Left"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding lesAutorisations}" HorizontalAlignment="Left" Width="598">
+            Background="#FFAACFC4"
+            ItemsSource="{Binding lesAutorisations}"
+            OpacityMask="#FFAACFC3">
+            <DataGrid.CellStyle>
+                <Style />
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding nomMedicament}"
-                    Header="Medicament" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding libelleMaladie}"
-                    Header="Maladie" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding date}"
-                    Header="Date" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding commentaire}"
-                    Header="Commentaire" />
+                <DataGridTextColumn Binding="{Binding nomMedicament}" Header="Medicament" />
+                <DataGridTextColumn Binding="{Binding libelleMaladie}" Header="Maladie" />
+                <DataGridTextColumn Binding="{Binding date}" Header="Date" />
+                <DataGridTextColumn Binding="{Binding commentaire}" Header="Commentaire" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <Calendar Margin="628,186,0,0" Height="169" VerticalAlignment="Top" HorizontalAlignment="Left" Width="201" />
+        <Calendar
+            x:Name="calendrier"
+            Grid.ColumnSpan="2"
+            Width="201"
+            Height="169"
+            Margin="583,40,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FFAACFC4"
+            Foreground="#FFA03232" />
 
         <TextBox
-            Height="73"
-            Margin="860,294,86,0"
+            x:Name="commentaire"
+            Height="78"
+            Margin="789,46,255,0"
             VerticalAlignment="Top"
+            Text=""
             TextWrapping="Wrap" />
         <Label
             Width="253"
             Height="25"
-            Margin="868,0,0,0"
+            Margin="784,15,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
             Background="White"
             Content="Commentaire (facultatif):" />
+        <Button
+            Width="120"
+            Height="62"
+            Margin="980,41,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF4E7D7E"
+            Click="AjoutAutorisation"
+            Content="Ajouter"
+            Foreground="White" />
+        <Button
+            Width="120"
+            Height="62"
+            Margin="980,424,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF4E7D7E"
+            Click="DelAutorisation"
+            Content="Delete"
+            Foreground="White" />
+        <Image
+            Width="246"
+            Margin="917,136,0,136"
+            HorizontalAlignment="Left"
+            Source="medecin.jpg"
+            Stretch="Fill" />
     </Grid>
 </Window>

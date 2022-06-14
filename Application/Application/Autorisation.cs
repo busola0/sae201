@@ -9,98 +9,12 @@ namespace Application
     {
         public System.Collections.ArrayList medicament;
 
-        /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetMedicament()
-        {
-            if (medicament == null)
-                medicament = new System.Collections.ArrayList();
-            return medicament;
-        }
-
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetMedicament(System.Collections.ArrayList newMedicament)
-        {
-            RemoveAllMedicament();
-            foreach (Medicament oMedicament in newMedicament)
-                AddMedicament(oMedicament);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddMedicament(Medicament newMedicament)
-        {
-            if (newMedicament == null)
-                return;
-            if (this.medicament == null)
-                this.medicament = new System.Collections.ArrayList();
-            if (!this.medicament.Contains(newMedicament))
-                this.medicament.Add(newMedicament);
-        }
-
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveMedicament(Medicament oldMedicament)
-        {
-            if (oldMedicament == null)
-                return;
-            if (this.medicament != null)
-                if (this.medicament.Contains(oldMedicament))
-                    this.medicament.Remove(oldMedicament);
-        }
-
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllMedicament()
-        {
-            if (medicament != null)
-                medicament.Clear();
-        }
-        public System.Collections.ArrayList maladie;
-
-        /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetMaladie()
-        {
-            if (maladie == null)
-                maladie = new System.Collections.ArrayList();
-            return maladie;
-        }
-
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetMaladie(System.Collections.ArrayList newMaladie)
-        {
-            RemoveAllMaladie();
-            foreach (Maladie oMaladie in newMaladie)
-                AddMaladie(oMaladie);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddMaladie(Maladie newMaladie)
-        {
-            if (newMaladie == null)
-                return;
-            if (this.maladie == null)
-                this.maladie = new System.Collections.ArrayList();
-            if (!this.maladie.Contains(newMaladie))
-                this.maladie.Add(newMaladie);
-        }
-
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveMaladie(Maladie oldMaladie)
-        {
-            if (oldMaladie == null)
-                return;
-            if (this.maladie != null)
-                if (this.maladie.Contains(oldMaladie))
-                    this.maladie.Remove(oldMaladie);
-        }
-
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllMaladie()
-        {
-            if (maladie != null)
-                maladie.Clear();
-        }
 
         public void Create()
         {
-            throw new NotImplementedException();
+            DataAccess access = new DataAccess();
+            access.openConnection();
+            access.setData($"INSERT INTO EST_AUTORISE(nummaladie,nummedicament, dateautorisation, commentaire) VALUES({idMaladie},{idMedicament}, '{this.date}', '{this.commentaire}')");
         }
 
         public void Read()
@@ -115,7 +29,9 @@ namespace Application
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess access = new DataAccess();
+            access.openConnection();
+            access.setData($"Delete from est_autorise where nummaladie = {idMaladie} AND nummedicament = {idMedicament} AND dateautorisation = '{this.date}'");
         }
 
         public List<Autorisation> FindAll()
@@ -129,17 +45,20 @@ namespace Application
             {
                 if (access.openConnection())
                 {
-                    reader = access.getData("select nomMedicament, libelleMaladie, dateautorisation, commentaire from est_autorise e join maladie ma on e.nummaladie = ma.nummaladie join medicament me on e.nummedicament = me.nummedicament");
+                    reader = access.getData("select ma.nummaladie, me.nummedicament, nomMedicament, libelleMaladie, dateautorisation, commentaire from est_autorise e join maladie ma on e.nummaladie = ma.nummaladie join medicament me on e.nummedicament = me.nummedicament");
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
                             Autorisation uneAutorisation = new Autorisation();
-                            uneAutorisation.nomMedicament = reader.GetString(0);
-                            uneAutorisation.libelleMaladie = reader.GetString(1);
-                            uneAutorisation.date = reader.GetDateTime(2);
-                            uneAutorisation.commentaire = reader.GetString(3);
+                            uneAutorisation.nomMedicament = reader.GetString(2);
+                            uneAutorisation.libelleMaladie = reader.GetString(3);
+                            uneAutorisation.date = ((DateTime)reader.GetDateTime(4)).ToShortDateString();
+                            uneAutorisation.commentaire = reader.GetString(5);
+                            uneAutorisation.idMaladie = reader.GetInt32(0);
+                            uneAutorisation.idMedicament = reader.GetInt32(1);
                             listeAutotisations.Add(uneAutorisation);
+                           
                         }
                     }
                     else
@@ -173,7 +92,7 @@ namespace Application
             get; set;
 
         }
-        public DateTime date
+        public string date
         {
             get; set;
 
@@ -183,6 +102,14 @@ namespace Application
         {
             get; set;
 
+        }
+        public int idMaladie
+        {
+            get;set;
+        }
+        public int idMedicament
+        {
+            get;set;
         }
 
     }
