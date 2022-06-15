@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     MinWidth="1190"
-    MinHeight="530"
-    mc:Ignorable="d">
+    MinHeight="550"
+    mc:Ignorable="d" Width="1002" Background="#FF266865">
     <Window.Resources>
 
         <DataTemplate x:Key="caseACocher">
@@ -19,13 +19,18 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF7DB9A6" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MinHeight="256" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="171*" />
-            <ColumnDefinition Width="67*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <ListView
@@ -58,7 +63,7 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="30" CellTemplate="{StaticResource caseACocher}" />
+                    <GridViewColumn  CellTemplate="{StaticResource caseACocher}" />
                     <GridViewColumn DisplayMemberBinding="{Binding libelleMedicament}" Header="Médicament" />
                 </GridView>
             </ListView.View>
@@ -67,7 +72,7 @@
 
         <Image
             Width="260"
-            Height="250"
+            Height="245"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Source="ZEDOC.png"
@@ -80,7 +85,7 @@
             Background="#FFAACFC4"
             Foreground="#FF2F4550"
             ItemsSource="{Binding lesAutorisations}"
-            RowBackground="#FFAACFC4">
+            RowBackground="#FFAACFC4" Margin="0,0,335,0">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding nomMedicament}" Header="Medicament" />
@@ -98,7 +103,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Text=""
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" BorderThickness="0,0,0,0" />
+
         <Label
             Width="141"
             Height="26"
@@ -106,7 +112,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="White"
-            Content="Commentaire (facultatif):" />
+            Content="Commentaire (facultatif):" BorderThickness="0,0,0,1" />
+
         <Button
             Width="278"
             Height="55"
@@ -117,36 +124,32 @@
             Click="AjoutAutorisation"
             Content="Ajouter"
             Foreground="White" />
+
         <Button
             Grid.Row="1"
-            Grid.Column="1"
-            Width="110"
             Height="52"
-            Margin="0,44,213,0"
-            HorizontalAlignment="Right"
+            Margin="0,75,215,0"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
             Click="DelAutorisation"
             Content="Modifier"
-            Foreground="White" />
+            Foreground="White" HorizontalAlignment="Right" Width="110" />
+
         <Button
             Grid.Row="1"
-            Grid.Column="1"
-            Width="110"
             Height="52"
-            Margin="0,137,213,0"
-            HorizontalAlignment="Right"
+            Margin="0,132,215,0"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
             Click="DelAutorisation"
             Content="Supprimer"
-            Foreground="White" />
+            Foreground="White" HorizontalAlignment="Right" Width="110" />
+
         <DatePicker
             x:Name="calendrier"
             Height="24"
-            Margin="265,140,0,0"
+            Margin="263,140,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            RenderTransformOrigin="0.341,3.085" />
+            VerticalAlignment="Top" Width="153" BorderThickness="0,0,0,0" />
     </Grid>
 </Window>

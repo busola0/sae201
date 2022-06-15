@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="doc.png" />
     <None Remove="maladie.jpg" />
     <None Remove="medecin.jpg" />
     <None Remove="pharmacie.jpg" />
     <None Remove="pharmacie.png" />
+    <None Remove="Sans titre%281%29.jpg" />
+    <None Remove="Sans titre%281%29.png" />
     <None Remove="Sans titre.png" />
     <None Remove="ZEDOC.png" />
   </ItemGroup>
@@ -20,13 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="maladie.jpg" />
-    <Resource Include="medecin.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Sans titre.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="ZEDOC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
