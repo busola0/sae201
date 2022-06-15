@@ -6,9 +6,11 @@
     xmlns:local="clr-namespace:Application"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
+    Width="1002"
     MinWidth="1190"
     MinHeight="550"
-    mc:Ignorable="d" Width="1002" Background="#FF266865">
+    Background="#FF266865"
+    mc:Ignorable="d">
     <Window.Resources>
 
         <DataTemplate x:Key="caseACocher">
@@ -20,9 +22,9 @@
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FF7DB9A6" Offset="1"/>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="Black" />
+                <GradientStop Offset="1" Color="#FF7DB9A6" />
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -63,7 +65,7 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  CellTemplate="{StaticResource caseACocher}" />
+                    <GridViewColumn CellTemplate="{StaticResource caseACocher}" />
                     <GridViewColumn DisplayMemberBinding="{Binding libelleMedicament}" Header="Médicament" />
                 </GridView>
             </ListView.View>
@@ -81,11 +83,10 @@
         <DataGrid
             x:Name="dataGridAuto"
             Grid.Row="1"
+            Margin="0,0,335,0"
             AutoGenerateColumns="False"
-            Background="#FFAACFC4"
             Foreground="#FF2F4550"
-            ItemsSource="{Binding lesAutorisations}"
-            RowBackground="#FFAACFC4" Margin="0,0,335,0">
+            ItemsSource="{Binding lesAutorisations}" Background="#FFAACFC4" RowBackground="#FFAACFC4">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding nomMedicament}" Header="Medicament" />
@@ -102,8 +103,9 @@
             Margin="265,190,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            BorderThickness="0,0,0,0"
             Text=""
-            TextWrapping="Wrap" BorderThickness="0,0,0,0" />
+            TextWrapping="Wrap" />
 
         <Label
             Width="141"
@@ -112,7 +114,8 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="White"
-            Content="Commentaire (facultatif):" BorderThickness="0,0,0,1" />
+            BorderThickness="0,0,0,1"
+            Content="Commentaire (facultatif):" />
 
         <Button
             Width="278"
@@ -127,29 +130,35 @@
 
         <Button
             Grid.Row="1"
+            Width="110"
             Height="52"
             Margin="0,75,215,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
             Click="DelAutorisation"
             Content="Modifier"
-            Foreground="White" HorizontalAlignment="Right" Width="110" />
+            Foreground="White" />
 
         <Button
             Grid.Row="1"
+            Width="110"
             Height="52"
             Margin="0,132,215,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
             Click="DelAutorisation"
             Content="Supprimer"
-            Foreground="White" HorizontalAlignment="Right" Width="110" />
+            Foreground="White" />
 
         <DatePicker
             x:Name="calendrier"
+            Width="153"
             Height="24"
             Margin="263,140,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Width="153" BorderThickness="0,0,0,0" />
+            VerticalAlignment="Top"
+            BorderThickness="0,0,0,0" />
     </Grid>
 </Window>
