@@ -24,7 +24,8 @@ namespace Application
 
         public void Update()
         {
-            throw new NotImplementedException();
+            DataAccess access = new DataAccess();
+            access.openConnection();
         }
 
         public void Delete()
@@ -58,6 +59,7 @@ namespace Application
                             uneAutorisation.idMaladie = reader.GetInt32(0);
                             uneAutorisation.idMedicament = reader.GetInt32(1);
                             listeAutotisations.Add(uneAutorisation);
+                            
                            
                         }
                     }

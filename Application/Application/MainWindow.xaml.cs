@@ -88,5 +88,9 @@ namespace Application
 
         }
 
+        private void ModifierAutorisation(object sender, RoutedEventArgs e)
+        {
+            Autorisation auto = (Autorisation)dataGridAuto.SelectedItem;
+        }
     }
 }

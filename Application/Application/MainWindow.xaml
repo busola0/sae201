@@ -23,8 +23,9 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                <GradientStop Color="Black" />
+                <GradientStop Color="#FF2A4B3E" />
                 <GradientStop Offset="1" Color="#FF7DB9A6" />
+                <GradientStop Offset="1" Color="#FF699B8B" />
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -85,8 +86,11 @@
             Grid.Row="1"
             Margin="0,0,335,0"
             AutoGenerateColumns="False"
+            Background="#FFAACFC4"
             Foreground="#FF2F4550"
-            ItemsSource="{Binding lesAutorisations}" Background="#FFAACFC4" RowBackground="#FFAACFC4">
+            IsReadOnly="True"
+            ItemsSource="{Binding lesAutorisations}"
+            RowBackground="#FFAACFC4">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding nomMedicament}" Header="Medicament" />
@@ -132,11 +136,11 @@
             Grid.Row="1"
             Width="110"
             Height="52"
-            Margin="0,75,215,0"
+            Margin="0,87,215,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
-            Click="DelAutorisation"
+            Click="ModifierAutorisation"
             Content="Modifier"
             Foreground="White" />
 
@@ -144,7 +148,7 @@
             Grid.Row="1"
             Width="110"
             Height="52"
-            Margin="0,132,215,0"
+            Margin="0,159,215,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#FF4E7D7E"
